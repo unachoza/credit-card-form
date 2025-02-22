@@ -1,5 +1,6 @@
 :root {
 	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	font-family: "Space Grotesk", sans-serif;
 	line-height: 1.5;
 	font-weight: 400;
 
@@ -20,7 +21,7 @@ body {
 	min-width: 320px;
 	min-height: 100vh;
 	background-color: white;
-  color: black;
+	color: black;
 }
 
 h1 {
@@ -57,5 +58,50 @@ button:focus-visible {
 	}
 	button {
 		background-color: #f9f9f9;
+	}
+}
+
+/* ---- Small (Phone) 375px ------ */
+/* only screen and (max-width: 767px) */
+@media (min-width: 375px) and (max-width: 600px) {
+	* {
+		color: red;
+	}
+	div.content {
+		color: red;
+	}
+	.container{
+		flex-direction: column;
+	}
+	main {
+		flex-direction: column;
+		margin: 5% 5%;
+	}
+}
+
+/* ---- Medium (Tablet) 768px x 1024px ---- */
+@media (min-width: 600px) and (max-width: 1000px) {
+	* {
+		color: blue;
+	}
+	.container {
+		min-width: 95vw;
+		border: solid red 3px;
+	}
+	.card-responses-container {
+		min-width: 400px;
+	}
+	.card-input-container {
+		min-width: 400px;
+	}
+	img#cardFront.card{
+		max-width: 85%;
+	}
+	img#cardBack.card{
+		max-width: 85%;
+
+	}
+	form{
+		max-width: 85%;
 	}
 }
