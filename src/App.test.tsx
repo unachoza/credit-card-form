@@ -9,4 +9,8 @@ describe("App component", () => {
 		// expect(h1Element).toBeInTheDocument();
 		// expect(h1Element).toHaveTextContent("Vite + React");
 	});
+	it("should update the details on the card as the user fills in the fields", () => {});
+	it("should Validate the form fields when the form is submitted");
+	it("shoud display the completed state when form is submitted with no errors", () => {});
+	it("should Reset the form when the user clicks Continue on the completed state ", () => {});
 });
