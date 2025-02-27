@@ -3,15 +3,19 @@ import SidePanelImage from "../src/assets/images/bg-main-desktop.png";
 import mobilePanelImage from "../src/assets/images/bg-main-mobile.png";
 import cardFrontImage from "../src/assets/images/bg-card-front.png";
 import cardBackImage from "../src/assets/images/bg-card-back.png";
+import cardIcon from "../src/assets/images/card-logo.svg"
+import iconComplete from "../src/assets/images/icon-complete.svg"
 import "./App.css";
 
 function App() {
+	const [complete, setComplete] = useState<boolean>(false)
 	const calcImageSize = () => {
 		return window.innerWidth < 600 ? mobilePanelImage : SidePanelImage;
 	};
 
 	const handleSubmit = (e: FormEvent) => {
 		e.preventDefault();
+		setComplete(true)
 	};
 	return (
 		<>
@@ -20,6 +24,8 @@ function App() {
 				<div className="card-responses-container">
 					<img id="cardFront" className="card" src={cardFrontImage} alt="card-front" />
 					<img id="cardBack" className="card" src={cardBackImage} alt="card-back" />
+					<img src={cardIcon} alt="card icon" />
+					<img src={iconComplete} alt="card icon" />
 				</div>
 				<div className="card-input-container">
 					<form onSubmit={handleSubmit}>

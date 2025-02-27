@@ -9,9 +9,10 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest",
-	"test:ui": "vitest --ui"
+    "test:ui": "vitest --ui"
   },
   "dependencies": {
+    "mobx-react-lite": "^4.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
