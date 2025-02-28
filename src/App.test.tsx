@@ -13,4 +13,5 @@ describe("App component", () => {
 	it("should Validate the form fields when the form is submitted");
 	it("shoud display the completed state when form is submitted with no errors", () => {});
 	it("should Reset the form when the user clicks Continue on the completed state ", () => {});
+	it("should load custom font and render text correctly", () => {});
 });
