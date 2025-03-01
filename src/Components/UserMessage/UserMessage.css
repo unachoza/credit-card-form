@@ -1,0 +1,7 @@
+.message-container {
+	display: flex;
+}
+
+.message-content {
+	color: var(--deep-violet);
+}
