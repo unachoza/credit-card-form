@@ -8,17 +8,17 @@ import iconComplete from "../src/assets/images/icon-complete.svg";
 import "./App.css";
 
 interface CardholderDetails {
-	cardName: string;
 	cardNumber: string;
-	expDate: number | null |string;
-	cvc: number | null | string;
+	cardName: string;
+	expDate?: number | null | string;
+	cvc?: number | null | string;
 }
 
 const initialState: CardholderDetails = {
-	cardName: "Jane Appleseed",
 	cardNumber: "0000000000000",
+	cardName: "Jane Appleseed",
 	expDate: "00/00",
-	cvc: "000",
+	// cvc: "000",
 };
 
 function App() {
@@ -44,8 +44,11 @@ function App() {
 			<div className="container">
 				<div className="card-responses-container">
 					<div className="front-card-values">
-						{Object.values(formState).map((value) => {
-							return <p key={`${value}-id`}>{value}</p>;
+						<img src={cardIcon} className="card-logo" alt="credit card icon" />
+						{Object.entries(formState).map(([key, value]) => {
+							console.log({ formState });
+							console.log({ key }, {key});
+							return <p key={`${value}-id`} className={key}>{value}</p>;
 						})}
 					</div>
 
@@ -61,7 +64,13 @@ function App() {
 					<form onSubmit={handleSubmit}>
 						<label htmlFor="card-name">
 							cardholder name
-							<input id="card-name" name="cardName" type="text" placeholder="e.g. Jane Appleseed" onChange={handleChange} />
+							<input
+								id="card-name"
+								name="cardName"
+								type="text"
+								placeholder="e.g. Jane Appleseed"
+								onChange={handleChange}
+							/>
 						</label>
 						<label htmlFor="card-number">
 							card number
