@@ -6,23 +6,31 @@ import cardBackImage from "../src/assets/images/bg-card-back.png";
 import cardIcon from "../src/assets/images/card-logo.svg";
 import iconComplete from "../src/assets/images/icon-complete.svg";
 import "./App.css";
+import Form from "./Components/Form/Form";
 
-interface CardholderDetails {
+interface CardholderDetailsFront {
 	cardNumber: string;
 	cardName: string;
 	expDate?: number | null | string;
+}
+
+interface CardholderDetailsBack {
 	cvc?: number | null | string;
 }
 
-const initialState: CardholderDetails = {
+const initialStateFront: CardholderDetailsFront = {
 	cardNumber: "0000000000000",
 	cardName: "Jane Appleseed",
 	expDate: "00/00",
-	// cvc: "000",
+};
+
+const initialStateBack: CardholderDetailsBack = {
+	cvc: "000",
 };
 
 function App() {
-	const [formState, setFormState] = useState<CardholderDetails>(initialState);
+	const [formFrontState, setFormFrontState] = useState<CardholderDetailsFront>(initialStateFront);
+	const [formBackState, setFormBackState] = useState<CardholderDetailsBack>(initialStateBack);
 	const [complete, setComplete] = useState<boolean>(false);
 
 	const calcImageSize = () => {
@@ -31,11 +39,13 @@ function App() {
 
 	const handleChange = (e: FormEvent<HTMLInputElement>): void => {
 		const { name, value } = e.currentTarget;
-		setFormState({ ...formState, [name]: value });
-		console.log({ formState });
+		setFormFrontState({ ...formFrontState, [name]: value });
+		console.log({ formFrontState });
 	};
-	const handleSubmit = (e: FormEvent) => {
+
+	const handleSubmit = (e: FormEvent): void => {
 		e.preventDefault();
+		console.log("clicked");
 		setComplete(true);
 	};
 	return (
@@ -45,52 +55,27 @@ function App() {
 				<div className="card-responses-container">
 					<div className="front-card-values">
 						<img src={cardIcon} className="card-logo" alt="credit card icon" />
-						{Object.entries(formState).map(([key, value]) => {
-							console.log({ formState });
-							console.log({ key }, {key});
-							return <p key={`${value}-id`} className={key}>{value}</p>;
+						{Object.entries(formFrontState).map(([key, value]) => {
+							console.log({ formFrontState });
+							console.log({ key }, { key });
+							return (
+								<p key={`${value}-id`} className={key}>
+									{value}
+								</p>
+							);
 						})}
 					</div>
 
 					<img id="cardFront" className="card" src={cardFrontImage} alt="card-front" />
 					<div className="back-card-values">
-						<p>{formState.cvc}</p>
+						<p>{formBackState.cvc}</p>
 					</div>
 					<img id="cardBack" className="card" src={cardBackImage} alt="card-back" />
 					{/* <img src={cardIcon} alt="card icon" /> */}
 					{/* <img src={iconComplete} alt="card icon" /> */}
 				</div>
 				<div className="card-input-container">
-					<form onSubmit={handleSubmit}>
-						<label htmlFor="card-name">
-							cardholder name
-							<input
-								id="card-name"
-								name="cardName"
-								type="text"
-								placeholder="e.g. Jane Appleseed"
-								onChange={handleChange}
-							/>
-						</label>
-						<label htmlFor="card-number">
-							card number
-							<input id="card-number" name="cardNumber" type="number" placeholder="e.g. 1234 5678 9123 0000" />
-						</label>
-						<div className="date-cvc-section">
-							<div className="month-year-container">
-								<label htmlFor="exp-date">EXP Date MM/YY</label>
-								<div className="month-year-inputs">
-									<input type="number" name="" id="exp-date" className="month-year-input" placeholder="MM" />
-									<input type="number" name="" id="exp-date" className="month-year-input" placeholder="YY" />
-								</div>
-							</div>
-
-							<label htmlFor="cvc">
-								CVC
-								<input id="cvc" type="number" className="cvc-input" placeholder="e.g. 123" />
-							</label>
-						</div>
-					</form>
+					<Form handleChange={handleChange} handleSubmit={handleSubmit} />
 				</div>
 				<div className="card"></div>
 			</div>

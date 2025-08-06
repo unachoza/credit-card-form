@@ -1,6 +1,6 @@
 :root {
 	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-	font-family: "Space Grotesk", sans-serif;
+	font-family: "Space Grotesk", serif;
 	line-height: 1.5;
 	font-weight: 400;
 
@@ -22,6 +22,7 @@ body {
 	min-height: 100vh;
 	background-color: white;
 	color: black;
+	box-sizing: border-box
 }
 
 h1 {
@@ -70,7 +71,7 @@ button:focus-visible {
 	div.content {
 		color: red;
 	}
-	.container{
+	.container {
 		flex-direction: column;
 	}
 	main {
@@ -90,18 +91,18 @@ button:focus-visible {
 	}
 	.card-responses-container {
 		min-width: 400px;
+		max-width: 31.25em;
 	}
 	.card-input-container {
 		min-width: 400px;
 	}
-	img#cardFront.card{
+	img#cardFront.card {
 		max-width: 85%;
 	}
-	img#cardBack.card{
+	img#cardBack.card {
 		max-width: 85%;
-
 	}
-	form{
+	form {
 		max-width: 85%;
 	}
 }

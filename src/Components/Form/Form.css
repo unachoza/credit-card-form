@@ -1,0 +1,75 @@
+.card-input-container {
+      min-width: 500px;
+      background-color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+}
+
+form {
+      min-width: 24rem;
+}
+
+label {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      color: var(--colors-purple-950);
+      font: var(--text-preset5-space-grotesk-medium);
+      letter-spacing: 0.125rem;
+      gap: var(--spacing-100);
+      text-transform: uppercase;
+}
+
+input {
+      box-sizing: border-box;
+      color: black;
+      background: var(--white);
+      height: 2.8125rem;
+      width: 100%;
+      padding: var(--spacing-100) var(--spacing-200);
+      margin-bottom: var(--spacing-300);
+      border: 1px solid var(--colors-gray-200);
+      border-radius: 0.5rem;
+}
+
+.mm-yy-container {
+      display: flex;
+}
+
+.month-year-input {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 5rem;
+      height: 2.8125rem;
+      padding: var(--spacing-100) var(--spacing-200);
+      margin-right: .5rem;
+}
+
+.cvc-input {
+      width: 100%;
+}
+
+.date-cvc-section {
+      display: flex;
+}
+
+.month-year-cvc-container {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+}
+
+.month-year-inputs {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-right: var(--spacing-300)
+}
+
+input::placeholder {
+      color: var(--colors-purple-950, #21092F);
+      opacity: .25;
+      font: var(--text-preset3-space-grotesk-medium);
+}

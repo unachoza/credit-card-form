@@ -3,7 +3,7 @@ button {
 	align-items: center;
 	justify-content: center;
 	border-radius: 5px;
-	height: 50px;
+	height: 3.3125rem;
 	color: white;
 	background-color: var(--green-600);
 	border: none;
@@ -11,11 +11,14 @@ button {
 	font-weight: 600;
 	margin: 1rem 0;
 	width: 100%;
+	border-radius: 0.5rem;
+	background: var(--colors-purple-950);
+	transition: all ease .4s;
 }
 
 button:hover {
 	cursor: pointer;
-	background-color: var(--grey-900);
+	transform: translateY(-2px);
 }
 
 button:focus {

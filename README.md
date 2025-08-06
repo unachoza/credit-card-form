@@ -28,6 +28,9 @@ Your users should be able to:
 
 
 ### What I learned
+
+I often forget to put box-sizing: border-box. Now I fully understand the consequence: An input element extending beyond its parent container typically indicates a CSS box model issue. I was using width 100% because I wanted the input to take up the complete width of the parent, but without border-box, my margins and padding were causing it to bleed outside the parent div. 
+
 ### Continued development
 ### Useful resources
 
