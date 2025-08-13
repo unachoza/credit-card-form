@@ -8,39 +8,29 @@ import iconComplete from "../src/assets/images/icon-complete.svg";
 import "./App.css";
 import Form from "./Components/Form/Form";
 
-interface CardholderDetailsFront {
+interface CardholderDetails {
 	cardNumber: string;
 	cardName: string;
 	expDate?: number | null | string;
-}
-
-interface CardholderDetailsBack {
 	cvc?: number | null | string;
 }
 
-const initialStateFront: CardholderDetailsFront = {
+const initialState: CardholderDetails = {
 	cardNumber: "0000000000000",
 	cardName: "Jane Appleseed",
 	expDate: "00/00",
-};
-
-const initialStateBack: CardholderDetailsBack = {
 	cvc: "000",
 };
 
 function App() {
-	const [formFrontState, setFormFrontState] = useState<CardholderDetailsFront>(initialStateFront);
-	const [formBackState, setFormBackState] = useState<CardholderDetailsBack>(initialStateBack);
+	const [cardDetails, setCardDetails] = useState<CardholderDetails>(initialState);
 	const [complete, setComplete] = useState<boolean>(false);
+
+	const cardFrontValues = Object.entries(cardDetails).slice(0, 3);
+	const cardBackValues = Object.entries(cardDetails).slice(3);
 
 	const calcImageSize = () => {
 		return window.innerWidth < 600 ? mobilePanelImage : SidePanelImage;
-	};
-
-	const handleChange = (e: FormEvent<HTMLInputElement>): void => {
-		const { name, value } = e.currentTarget;
-		setFormFrontState({ ...formFrontState, [name]: value });
-		console.log({ formFrontState });
 	};
 
 	const handleSubmit = (e: FormEvent): void => {
@@ -55,27 +45,25 @@ function App() {
 				<div className="card-responses-container">
 					<div className="front-card-values">
 						<img src={cardIcon} className="card-logo" alt="credit card icon" />
-						{Object.entries(formFrontState).map(([key, value]) => {
-							console.log({ formFrontState });
-							console.log({ key }, { key });
-							return (
-								<p key={`${value}-id`} className={key}>
-									{value}
-								</p>
-							);
-						})}
+						{cardFrontValues.map(([key, value]) => (
+							<p key={`${key}-id`} className={key}>
+								{value}
+							</p>
+						))}
 					</div>
 
 					<img id="cardFront" className="card" src={cardFrontImage} alt="card-front" />
 					<div className="back-card-values">
-						<p>{formBackState.cvc}</p>
+						{cardBackValues.map(([key, value]) => (
+							<p key={`${key}-id`} className={key}>
+								{value}
+							</p>
+						))}
 					</div>
 					<img id="cardBack" className="card" src={cardBackImage} alt="card-back" />
-					{/* <img src={cardIcon} alt="card icon" /> */}
-					{/* <img src={iconComplete} alt="card icon" /> */}
 				</div>
 				<div className="card-input-container">
-					<Form handleChange={handleChange} handleSubmit={handleSubmit} />
+					<Form setCardDetails={setCardDetails} handleSubmit={handleSubmit} />
 				</div>
 				<div className="card"></div>
 			</div>

@@ -5,7 +5,8 @@ import Button from "./Button";
 
 describe("Button Component", () => {
 	it("should render text", () => {
-		render(<Button text="example" type="button" />);
+		const mockHandleSubmit = vi.fn();
+		render(<Button text="example" type="button" handleClick={mockHandleSubmit} />);
 		const buttonElement = screen.getByRole("button");
 		expect(buttonElement).toBeInTheDocument();
 		expect(buttonElement).toHaveTextContent(/example/i);
@@ -13,7 +14,7 @@ describe("Button Component", () => {
 
 	it("should reset the form when the user clicks button on the completed state with text 'continue'", async () => {
 		const mockHandleSubmit = vi.fn();
-		render(<Button text="continue" type="reset" />);
+		render(<Button text="continue" type="reset" handleClick={mockHandleSubmit} />);
 		const buttonElement = await screen.findByRole("button");
 		expect(buttonElement).toBeInTheDocument();
 		await userEvent.click(buttonElement);
