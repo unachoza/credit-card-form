@@ -1,0 +1,119 @@
+/* Card User Responses */
+.card-responses-container {
+      position: relative;
+      width: 50%;
+      min-width: 500px;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      height: fit-content;
+      max-width: 31.25em;
+}
+
+.front-card-values {
+      width: 27.9375rem;
+      height: 15.3125rem;
+      padding: 1.75rem 2rem;
+      position: absolute;
+      border: solid purple;
+      z-index: 200;
+      text-align: left;
+}
+
+.front-card-values .card-logo {
+      display: flex;
+      margin-bottom: 4rem;
+}
+
+.front-card-values p {
+      z-index: 101;
+      color: white;
+      font-family: "Space Grotesk";
+      font-size: 1.75rem;
+      font-weight: 500;
+      line-height: 130%;
+      letter-spacing: 0.21875rem;
+      margin-bottom: 1.5rem;
+}
+
+p.cardNumber{
+      color: var(--white)
+}
+
+p.cardName {
+      color: var(--white);
+      font-feature-settings: 'liga' off, 'clig' off;
+      font-family: "Space Grotesk";
+      font-size: 0.875rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 130%; 
+      letter-spacing: 0.125rem;
+      text-transform: uppercase;
+}
+
+p.expDate {
+      color: var(--white);
+      text-align: right;
+      font-feature-settings: 'liga' off, 'clig' off;
+      font-family: "Space Grotesk";
+      font-size: 0.875rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 130%; 
+      letter-spacing: 0.125rem;
+      text-transform: uppercase;
+      position: absolute;
+      right: 6rem;
+      bottom: 3.7rem;
+}
+
+.back-card-values p {
+      z-index: 106;
+      color: white;
+      position: absolute;
+      width: 90%;
+      height: 100px;
+      bottom: 4%;
+      left: 42%;
+      border: solid green;
+}
+
+img#cardFront.card {
+      z-index: 100;
+      width: 90%;
+      max-width: 475px;
+      max-height: 245px;
+      height: 90%;
+      display: flex;
+      align-self: flex-start;
+      justify-self: start;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4588235294);
+}
+
+img#cardBack.card {
+      z-index: 100;
+      width: 90%;
+      max-width: 475px;
+      max-height: 245px;
+      height: 90%;
+      display: flex;
+      align-self: flex-end;
+      justify-self: flex-end;
+      margin-top: 10px;
+      border-radius: 10px;
+      box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4588235294);
+}
+
+.card-input-container {
+      position: relative;
+      width: 50%;
+      min-width: 500px;
+      background-color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+}
