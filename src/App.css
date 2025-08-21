@@ -5,17 +5,19 @@
 	--primary-linear: linear-gradient(hsl(249, 99%, 64%) to hsl(278, 94%, 30%));
 	--input-errors: #ff5252;
 	--light-graysih-violet: #dedddf;
-	--dark-grayish-violet: hsl(279, 6%, 55%);
+	--dark-grayish-violet: #8e8593;
 	--very-dark-violet: hsl(278, 68%, 11%);
 	--deep-violet: #21092f;
 	--gradient-start: #6348fe;
 	--gradient-end: #610595;
 	--light-grey: #8e8593;
 	--white: #ffffff;
-
+	
 	--colors-purple-950: #21092F;
 	--colors-gray-200: #DFDEE0;
+	--colors-gray-400: #ADB5BE;
 	/* font: [font-weight] [font-size]/[line-height] [font-family]; */
+	--text-preset1-space-grotesk-medium: 500  1.75rem/1.3 "Space Grotesk";
 	--text-preset3-space-grotesk-medium: 500  1.125rem/1.3 "Space Grotesk";
 	--text-preset5-space-grotesk-medium: 500 0.75rem/1.25 "Space Grotesk";
 
@@ -24,6 +26,7 @@
 	--spacing-200: 1rem;
 	--spacing-300: 1.5rem;
 	--spacing-400: 2rem;
+	--spacing-500: 2.5rem;
 }
 
 #root {
@@ -40,9 +43,75 @@
 	justify-content: space-between;
 }
 
+/* purple side panel */
 img.side-panel {
 	position: absolute;
 	z-index: -10;
 	top: 0;
 	left: 0;
 }
+
+/* Card User Responses */
+.card-responses-container {
+	position: relative;
+	width: 50%;
+	min-width: 500px;
+	z-index: 10;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+	height: fit-content;
+	max-width: 31.25em;
+}
+
+.back-card-values p {
+	z-index: 106;
+	color: var(--white);
+	position: absolute;
+	width: 90%;
+	height: 100px;
+	bottom: 4%;
+	left: 42%;
+	border: solid green;
+}
+
+/* Card Form and Complete Container */
+.card-input-container {
+	min-width: 500px;
+	width: 24rem;
+	background-color: var(--white);
+	display: flex;
+	align-items: center;
+	height: 500px;
+}
+
+
+/* Card Images */
+img#cardFront.card {
+	z-index: 100;
+	width: 90%;
+	max-width: 475px;
+	max-height: 245px;
+	height: 90%;
+	display: flex;
+	align-self: flex-start;
+	justify-self: start;
+	margin-bottom: 10px;
+	border-radius: 10px;
+	box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4588235294);
+}
+
+img#cardBack.card {
+	z-index: 100;
+	width: 90%;
+	max-width: 475px;
+	max-height: 245px;
+	height: 90%;
+	display: flex;
+	align-self: flex-end;
+	justify-self: flex-end;
+	margin-top: 10px;
+	border-radius: 10px;
+	box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4588235294);
+}
+

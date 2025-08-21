@@ -1,21 +1,21 @@
 import { Dispatch, FormEvent, SetStateAction, useState } from "react";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
+import { CardholderDetailsType } from "../../utils/types";
 import "./Form.css";
-import { CardholderDetails } from "../../utils/types";
 
 interface FormProps {
 	handleSubmit: (e: FormEvent) => void;
-	setCardDetails: Dispatch<SetStateAction<CardholderDetails>>;
+	setCardDetails: Dispatch<SetStateAction<CardholderDetailsType>>;
 }
 
 const Form = ({ setCardDetails, handleSubmit }: FormProps) => {
-	const [form, setForm] = useState<CardholderDetails>({
+	const [form, setForm] = useState<Omit<CardholderDetailsType, "expDate">>({
 		cardNumber: "",
 		cardName: "",
 		expDateM: "",
 		expDateY: "",
-		cvc: "000",
+		cvc: "",
 	});
 
 	const formatters: Record<string, (value: string) => string> = {
@@ -45,54 +45,56 @@ const Form = ({ setCardDetails, handleSubmit }: FormProps) => {
 		<form onSubmit={handleSubmit}>
 			<Input
 				id="card-name"
+				type="text"
 				label="cardholder name"
 				name="cardName"
 				value={form.cardName}
-				type="text"
 				placeholder="e.g. Jane Appleseed"
 				handleChange={handleChange}
 			/>
 			<Input
 				id="card-number"
+				type="text"
 				label="card number"
 				name="cardNumber"
 				value={form.cardNumber}
-				type="text"
 				placeholder="e.g. 1234 5678 9123 0000"
 				handleChange={handleChange}
 			/>
-			<div className="date-cvc-section">
-				<div className="month-year-cvc-container">
-					<div className="month-year-inputs">
-						<label htmlFor="exp-date">exp date (mm/yy)</label>
-						<div className="mm-yy-container">
-							<Input
-								id="exp-date"
-								name="expDateM"
-								value={form.expDateM}
-								type="number"
-								placeholder="MM"
-								className="month-year-input"
-								handleChange={handleChange}
-							/>
-							<Input
-								id="exp-date"
-								name="expDateY"
-								value={form.expDateY}
-								type="number"
-								placeholder="YY"
-								className="month-year-input"
-								handleChange={handleChange}
-							/>
-						</div>
-					</div>
-					<div className="cvc-inputs">
-						<label htmlFor="cvc">
-							cvc
-							<input id="cvc" type="number" className="cvc-input" placeholder="e.g. 123" />
-						</label>
+			<div className="month-year-cvc-container">
+				<div className="month-year-inputs">
+					<label htmlFor="exp-date">exp date (mm/yy)</label>
+					<div className="mm-yy-container">
+						<Input
+							id="exp-date-m"
+							type="number"
+							name="expDateM"
+							value={form.expDateM}
+							placeholder="MM"
+							className="month-year-input"
+							handleChange={handleChange}
+						/>
+						<Input
+							id="exp-date-y"
+							type="number"
+							name="expDateY"
+							value={form.expDateY}
+							placeholder="YY"
+							className="month-year-input"
+							handleChange={handleChange}
+						/>
 					</div>
 				</div>
+				<Input
+					id="cvc"
+					type="number"
+					label="cvc"
+					name="cvc"
+					value={form.cvc}
+					placeholder="e.g. 123"
+					className="cvc-input"
+					handleChange={handleChange}
+				/>
 			</div>
 			<Button type="submit" text="Confirm" handleClick={handleSubmit} />
 		</form>

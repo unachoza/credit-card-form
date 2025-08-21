@@ -2,14 +2,11 @@ button {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	border-radius: 5px;
 	height: 3.3125rem;
-	color: white;
-	background-color: var(--green-600);
+	color: var(--white);
 	border: none;
-	font-size: 16px;
+	font-size: 1.125rem;
 	font-weight: 600;
-	margin: 1rem 0;
 	width: 100%;
 	border-radius: 0.5rem;
 	background: var(--colors-purple-950);
@@ -26,5 +23,5 @@ button:focus {
 }
 
 .button-container{
-    
+	width: 100%;
 }

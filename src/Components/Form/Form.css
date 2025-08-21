@@ -1,36 +1,9 @@
-.card-input-container {
-      min-width: 500px;
-      background-color: var(--white);
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-}
-
 form {
-      min-width: 24rem;
-}
-
-label {
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
-      color: var(--colors-purple-950);
-      font: var(--text-preset5-space-grotesk-medium);
-      letter-spacing: 0.125rem;
-      gap: var(--spacing-100);
-      text-transform: uppercase;
-}
-
-input {
-      box-sizing: border-box;
-      color: black;
-      background: var(--white);
-      height: 2.8125rem;
-      width: 100%;
-      padding: var(--spacing-100) var(--spacing-200);
-      margin-bottom: var(--spacing-300);
-      border: 1px solid var(--colors-gray-200);
-      border-radius: 0.5rem;
+      justify-content: space-between;
+      width: 24rem;
+      height: 21.6rem;
 }
 
 .mm-yy-container {
@@ -45,14 +18,12 @@ input {
       height: 2.8125rem;
       padding: var(--spacing-100) var(--spacing-200);
       margin-right: .5rem;
+      font: var(--text-preset3-space-grotesk-medium);
 }
 
 .cvc-input {
       width: 100%;
-}
-
-.date-cvc-section {
-      display: flex;
+      font: var(--text-preset3-space-grotesk-medium);
 }
 
 .month-year-cvc-container {
@@ -66,10 +37,4 @@ input {
       flex-direction: column;
       justify-content: space-between;
       margin-right: var(--spacing-300)
-}
-
-input::placeholder {
-      color: var(--colors-purple-950, #21092F);
-      opacity: .25;
-      font: var(--text-preset3-space-grotesk-medium);
 }

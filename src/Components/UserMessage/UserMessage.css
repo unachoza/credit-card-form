@@ -1,7 +1,31 @@
 .message-container {
 	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-end;
+	width: 24rem;
+	height: 21.6rem;
+	gap: var(--spacing-400);
+}
+
+.message-container img {
+	height: 5rem;
+	width: 5rem;
+	margin-bottom: var(--spacing-400)
 }
 
 .message-content {
 	color: var(--deep-violet);
+	font: var(--text-preset3-space-grotesk-medium);
+	text-align: center;
+}
+
+.message-content .title {
+	text-transform: uppercase;
+	font-size: 1.75rem; /* override the present font size */
+	letter-spacing: 0.21875rem;
+}
+
+.message-content .content {
+	color: var(--colors-gray-400);
 }

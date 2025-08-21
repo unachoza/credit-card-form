@@ -1,14 +1,9 @@
 import cardIcon from "../../assets/images/card-logo.svg";
+import { CardholderDetailsType } from "../../utils/types";
 import "./CardDisplay.css";
 
-interface CardDisplayProps {
-	cardNumber: string;
-	cardName: string;
-	expDate?: number | null | string;
-	cvc?: number | null | string;
-}
-
-const CardDisplay = ({ cardName, cardNumber, expDate }: CardDisplayProps) => {
+const CardDisplay = ({ cardName, cardNumber, expDateM, expDateY }: Omit<CardholderDetailsType, "cvc">) => {
+	const expDate = expDateY.length > 0 ? `${expDateM}/${expDateY}` : expDateM ? `${expDateM}/` : "";
 	return (
 		<div className="front-card-values">
 			<img src={cardIcon} className="card-logo" alt="credit card icon" />

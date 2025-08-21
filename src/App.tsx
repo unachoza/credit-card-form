@@ -3,35 +3,42 @@ import SidePanelImage from "../src/assets/images/bg-main-desktop.png";
 import mobilePanelImage from "../src/assets/images/bg-main-mobile.png";
 import cardFrontImage from "../src/assets/images/bg-card-front.png";
 import cardBackImage from "../src/assets/images/bg-card-back.png";
-import iconComplete from "../src/assets/images/icon-complete.svg";
 import CardDisplay from "./Components/CardDisplay/CardDisplay";
-import "./App.css";
 import Form from "./Components/Form/Form";
-import { CardholderDetails } from "./utils/types";
+import UserMessage from "./Components/UserMessage/UserMessage";
+import { CardholderDetailsType, MessageType } from "./utils/types";
+import "./App.css";
 
-const initialState: CardholderDetails = {
+const initialState: CardholderDetailsType = {
 	cardNumber: "0000 0000 0000 0000",
 	cardName: "Jane Appleseed",
-	expDateM: "00/",
+	expDateM: "00",
 	expDateY: "00",
 	cvc: "000",
 };
 
-function App() {
-	const [cardDetails, setCardDetails] = useState<CardholderDetails>(initialState);
-	const [complete, setComplete] = useState<boolean>(false);
+const message: MessageType = {
+	title: "Thank you!",
+	content: "We've added your card details",
+};
 
-	const cardBackValues = Object.entries(cardDetails).slice(3);
+function App() {
+	const [cardDetails, setCardDetails] = useState<CardholderDetailsType>(initialState);
+	const [complete, setComplete] = useState<boolean>(false);
 
 	const calcImageSize = () => {
 		return window.innerWidth < 600 ? mobilePanelImage : SidePanelImage;
 	};
 
+	const resetForm = () => setComplete(false);
+
 	const handleSubmit = (e: FormEvent): void => {
 		e.preventDefault();
 		console.log("clicked");
+		//validation!!
 		setComplete(true);
 	};
+
 	return (
 		<>
 			<img src={calcImageSize()} className="side-panel" alt="decoration" />
@@ -40,29 +47,17 @@ function App() {
 					<CardDisplay {...cardDetails} />
 					<img id="cardFront" className="card" src={cardFrontImage} alt="card-front" />
 					<div className="back-card-values">
-						{cardBackValues.map(([key, value]) => (
-							<p key={`${key}-id`} className={key}>
-								{value}
-							</p>
-						))}
+						<p className="cvc">{cardDetails.cvc || "000"}</p>
 					</div>
 					<img id="cardBack" className="card" src={cardBackImage} alt="card-back" />
 				</div>
 				<div className="card-input-container">
-					<Form setCardDetails={setCardDetails} handleSubmit={handleSubmit} />
+					{!complete && <Form setCardDetails={setCardDetails} handleSubmit={handleSubmit} />}
+					{complete && <UserMessage message={message} reset={resetForm} />}
 				</div>
-				<div className="card"></div>
 			</div>
 		</>
 	);
 }
 
 export default App;
-
-// Confirm
-
-// <!-- Completed state start -->
-
-// Thank you!
-// We've added your card details
-// Continue
