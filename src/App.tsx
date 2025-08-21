@@ -7,18 +7,13 @@ import iconComplete from "../src/assets/images/icon-complete.svg";
 import CardDisplay from "./Components/CardDisplay/CardDisplay";
 import "./App.css";
 import Form from "./Components/Form/Form";
-
-interface CardholderDetails {
-	cardNumber: string;
-	cardName: string;
-	expDate?: number | null | string;
-	cvc?: number | null | string;
-}
+import { CardholderDetails } from "./utils/types";
 
 const initialState: CardholderDetails = {
-	cardNumber: "0000000000000",
+	cardNumber: "0000 0000 0000 0000",
 	cardName: "Jane Appleseed",
-	expDate: "00/00",
+	expDateM: "00/",
+	expDateY: "00",
 	cvc: "000",
 };
 

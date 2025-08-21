@@ -7,12 +7,12 @@ describe("Form Component", () => {
 	it("should render the form", () => {
 		const handleSubmit = vi.fn();
 		const handleChange = vi.fn();
-		render(<Form handleChange={handleChange} handleSubmit={handleSubmit} />);
+		render(<Form setCardDetails={handleChange} handleSubmit={handleSubmit} />);
 		const formElement = screen.getByRole("form");
 		expect(formElement).toBeInTheDocument();
 	});
 
 	it("does not render number input controls");
 
-      it("should update user input from form to credit card image on key press")
+	it("should update user input from form to credit card image on key press");
 });

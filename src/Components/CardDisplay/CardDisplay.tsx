@@ -8,7 +8,7 @@ interface CardDisplayProps {
 	cvc?: number | null | string;
 }
 
-const CardDisplay = ({ cardName, cardNumber, expDate, cvc }: CardDisplayProps) => {
+const CardDisplay = ({ cardName, cardNumber, expDate }: CardDisplayProps) => {
 	return (
 		<div className="front-card-values">
 			<img src={cardIcon} className="card-logo" alt="credit card icon" />
