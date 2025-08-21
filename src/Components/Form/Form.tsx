@@ -13,29 +13,28 @@ const Form = ({ setCardDetails, handleSubmit }: FormProps) => {
 	const [form, setForm] = useState<CardholderDetails>({
 		cardNumber: "",
 		cardName: "",
-		expDate: "",
+		expDateM: "",
+		expDateY: "",
 		cvc: "000",
 	});
 
-	const formatCreditCardNumber = (input: string): string => {
-		let newInput = input
-			.replace(/\D/g, "")
-			.slice(0, 16)
-			.replace(/(.{4})/g, "$1 ")
-			.trim();
-		return newInput;
+	const formatters: Record<string, (value: string) => string> = {
+		cardNumber: (value) =>
+			value
+				.replace(/\D/g, "")
+				.slice(0, 16)
+				.replace(/(.{4})/g, "$1 ")
+				.trim(),
+
+		expDateM: (value) => value.replace(/\D/g, "").slice(0, 2),
+		expDateY: (value) => value.replace(/\D/g, "").slice(0, 2),
+		cvc: (value) => value.replace(/\D/g, "").slice(0, 3),
 	};
 
 	const handleChange = (e: FormEvent<HTMLInputElement>): void => {
 		const { name, value } = e.currentTarget;
-		let updatedValue = value;
-		if (name === "cardNumber") {
-			updatedValue = formatCreditCardNumber(value);
-		}
-
-		if (name === "expDate") {
-			updatedValue = value.replace(/\D/g, "").slice(0, 2);
-		}
+		const formatter = formatters[name] ?? ((v: string) => v);
+		const updatedValue = formatter(value);
 
 		const newForm = { ...form, [name]: updatedValue };
 		setForm(newForm);
@@ -69,8 +68,8 @@ const Form = ({ setCardDetails, handleSubmit }: FormProps) => {
 						<div className="mm-yy-container">
 							<Input
 								id="exp-date"
-								name="expDate"
-								value={form.expDate}
+								name="expDateM"
+								value={form.expDateM}
 								type="number"
 								placeholder="MM"
 								className="month-year-input"
@@ -78,8 +77,8 @@ const Form = ({ setCardDetails, handleSubmit }: FormProps) => {
 							/>
 							<Input
 								id="exp-date"
-								name="expDate"
-								value={form.expDate}
+								name="expDateY"
+								value={form.expDateY}
 								type="number"
 								placeholder="YY"
 								className="month-year-input"

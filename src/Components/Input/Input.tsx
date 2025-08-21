@@ -12,11 +12,19 @@ interface InputProps {
 	handleChange: (e: FormEvent<HTMLInputElement>) => void;
 }
 
-const Input = ({ id, label, name, value, type, placeholder, handleChange }: InputProps) => {
+const Input = ({ id, label, name, className, value, type, placeholder, handleChange }: InputProps) => {
 	return (
 		<label htmlFor={id}>
 			{label ? label : null}
-			<input id={id} name={name} value={value} type={type} placeholder={placeholder} onChange={handleChange} />
+			<input
+				id={id}
+				name={name}
+				className={className ? className : ""}
+				value={value}
+				type={type}
+				placeholder={placeholder}
+				onChange={handleChange}
+			/>
 		</label>
 	);
 };
