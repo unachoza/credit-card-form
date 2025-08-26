@@ -8,8 +8,10 @@ const CardDisplay = ({ cardName, cardNumber, expDateM, expDateY }: Omit<Cardhold
 		<div className="front-card-values">
 			<img src={cardIcon} className="card-logo" alt="credit card icon" />
 			<p className="cardNumber">{cardNumber || "0000 0000 0000 0000"}</p>
-			<p className="cardName">{cardName || "Jane Appleseed"}</p>
-			<p className="expDate">{expDate || "00/00"}</p>
+			<div className="second-row">
+				<p className="cardName">{cardName || "Jane Appleseed"}</p>
+				<p className="expDate">{expDate || "00/00"}</p>
+			</div>
 		</div>
 	);
 };

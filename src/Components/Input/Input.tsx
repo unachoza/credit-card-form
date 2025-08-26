@@ -7,15 +7,16 @@ interface InputProps {
 	name: string;
 	className?: string;
 	value: string | number;
+	errorMessage?: string;
 	type: string;
 	placeholder: string;
 	handleChange: (e: FormEvent<HTMLInputElement>) => void;
 }
 
-const Input = ({ id, label, name, className, value, type, placeholder, handleChange }: InputProps) => {
+const Input = ({ id, label, name, className, value, errorMessage, type, placeholder, handleChange }: InputProps) => {
 	return (
 		<label htmlFor={id}>
-			{label ? label : null}
+			<div className="label-text">{label ? label : null}</div>
 			<input
 				id={id}
 				name={name}
@@ -24,7 +25,11 @@ const Input = ({ id, label, name, className, value, type, placeholder, handleCha
 				type={type}
 				placeholder={placeholder}
 				onChange={handleChange}
+				required
 			/>
+			<div className="error-message" role="alert" id={`${name}-error`}>
+				{errorMessage}
+			</div>
 		</label>
 	);
 };

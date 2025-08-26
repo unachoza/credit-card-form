@@ -6,8 +6,9 @@ label {
       color: var(--colors-purple-950);
       font: var(--text-preset5-space-grotesk-medium);
       letter-spacing: 0.125rem;
-      gap: var(--spacing-100);
       text-transform: uppercase;
+      gap: var(--spacing-100);
+      margin-bottom: var(--spacing-300);
 }
 
 input {
@@ -17,9 +18,9 @@ input {
       height: 2.8125rem;
       width: 100%;
       padding: var(--spacing-100) var(--spacing-200);
-      margin-bottom: var(--spacing-300);
       border: 1px solid var(--colors-gray-200);
       border-radius: 0.5rem;
+      transition: all .4s ease; 
 }
 
 input[type="text"] {
@@ -33,4 +34,35 @@ input::placeholder {
       color: var(--colors-purple-950);
       opacity: .25;
       font: var(--text-preset3-space-grotesk-medium);
+}
+
+input:focus {
+      outline: none;
+      border-radius: 0.5rem;
+      border: 1px solid var(--gradient-start);
+      background: var(--white);
+}
+
+input:user-invalid{
+      border-radius: 0.5rem;
+      border: 1px solid var(--input-errors);
+      background: var(--white);
+}
+
+.error-message {
+      color: var(--input-errors);
+      font: var(--text-preset5-space-grotesk-medium);
+      line-height: 125%;
+      height: 0;
+      overflow: hidden;
+      transition: all .4s ease; 
+}
+
+input:user-invalid ~ .error-message {
+      height: .93rem;
+}
+
+#expDateM-error.error-message {
+      width: 200%;
+      text-align: left;
 }

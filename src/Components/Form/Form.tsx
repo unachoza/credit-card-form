@@ -25,7 +25,7 @@ const Form = ({ setCardDetails, handleSubmit }: FormProps) => {
 				.slice(0, 16)
 				.replace(/(.{4})/g, "$1 ")
 				.trim(),
-
+		cardName: (value) => value.replace(/^[\s\d]+/, ""),
 		expDateM: (value) => value.replace(/\D/g, "").slice(0, 2),
 		expDateY: (value) => value.replace(/\D/g, "").slice(0, 2),
 		cvc: (value) => value.replace(/\D/g, "").slice(0, 3),
@@ -49,6 +49,7 @@ const Form = ({ setCardDetails, handleSubmit }: FormProps) => {
 				label="cardholder name"
 				name="cardName"
 				value={form.cardName}
+				errorMessage="can't be blank"
 				placeholder="e.g. Jane Appleseed"
 				handleChange={handleChange}
 			/>
@@ -58,25 +59,27 @@ const Form = ({ setCardDetails, handleSubmit }: FormProps) => {
 				label="card number"
 				name="cardNumber"
 				value={form.cardNumber}
+				errorMessage="wrong format, numbers only"
 				placeholder="e.g. 1234 5678 9123 0000"
 				handleChange={handleChange}
 			/>
 			<div className="month-year-cvc-container">
 				<div className="month-year-inputs">
-					<label htmlFor="exp-date">exp date (mm/yy)</label>
+					<div className="label-text">exp date (mm/yy)</div>
 					<div className="mm-yy-container">
 						<Input
 							id="exp-date-m"
-							type="number"
+							type="text"
 							name="expDateM"
 							value={form.expDateM}
+							errorMessage="can't be blank"
 							placeholder="MM"
 							className="month-year-input"
 							handleChange={handleChange}
 						/>
 						<Input
 							id="exp-date-y"
-							type="number"
+							type="text"
 							name="expDateY"
 							value={form.expDateY}
 							placeholder="YY"
@@ -87,10 +90,11 @@ const Form = ({ setCardDetails, handleSubmit }: FormProps) => {
 				</div>
 				<Input
 					id="cvc"
-					type="number"
+					type="text"
 					label="cvc"
 					name="cvc"
 					value={form.cvc}
+					errorMessage="can't be blank"
 					placeholder="e.g. 123"
 					className="cvc-input"
 					handleChange={handleChange}

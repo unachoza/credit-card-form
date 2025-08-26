@@ -21,6 +21,14 @@ form {
       font: var(--text-preset3-space-grotesk-medium);
 }
 
+.label-text{
+      color: var(--colors-purple-950);
+      font: var(--text-preset5-space-grotesk-medium);
+      letter-spacing: 0.125rem;
+      text-transform: uppercase;
+      text-align: left;
+}
+
 .cvc-input {
       width: 100%;
       font: var(--text-preset3-space-grotesk-medium);

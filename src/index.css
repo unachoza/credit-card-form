@@ -13,6 +13,14 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
 body {
 	margin: 0;
 	display: flex;
@@ -41,18 +49,6 @@ button {
 button:focus,
 button:focus-visible {
 	outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-	:root {
-		background-color: #ffffff;
-	}
-	a:hover {
-		color: #747bff;
-	}
-	button {
-		background-color: #f9f9f9;
-	}
 }
 
 /* ---- Small (Phone) 375px ------ */
