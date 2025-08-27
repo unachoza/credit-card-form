@@ -5,11 +5,11 @@ import { CardholderDetailsType } from "../../utils/types";
 import "./Form.css";
 
 interface FormProps {
-	handleSubmit: (e: FormEvent) => void;
+	onSubmit: () => void;
 	setCardDetails: Dispatch<SetStateAction<CardholderDetailsType>>;
 }
 
-const Form = ({ setCardDetails, handleSubmit }: FormProps) => {
+const Form = ({ setCardDetails, onSubmit }: FormProps) => {
 	const [form, setForm] = useState<Omit<CardholderDetailsType, "expDate">>({
 		cardNumber: "",
 		cardName: "",
@@ -41,11 +41,22 @@ const Form = ({ setCardDetails, handleSubmit }: FormProps) => {
 		setCardDetails(newForm);
 	};
 
+	const validate = () => {
+		return Object.values(form).every((value) => value) ? true : false;
+	};
+
+	const handleSubmit = (e: FormEvent): void => {
+		e.preventDefault();
+		const isValid = validate();
+		if (isValid) {
+			onSubmit();
+		}
+	};
+
 	return (
 		<form onSubmit={handleSubmit}>
 			<Input
 				id="card-name"
-				type="text"
 				label="cardholder name"
 				name="cardName"
 				value={form.cardName}
@@ -55,13 +66,13 @@ const Form = ({ setCardDetails, handleSubmit }: FormProps) => {
 			/>
 			<Input
 				id="card-number"
-				type="text"
 				label="card number"
 				name="cardNumber"
 				value={form.cardNumber}
-				errorMessage="wrong format, numbers only"
+				errorMessage="card number must be 16 digits"
 				placeholder="e.g. 1234 5678 9123 0000"
 				handleChange={handleChange}
+				min={parseInt("16")}
 			/>
 			<div className="month-year-cvc-container">
 				<div className="month-year-inputs">
@@ -69,28 +80,27 @@ const Form = ({ setCardDetails, handleSubmit }: FormProps) => {
 					<div className="mm-yy-container">
 						<Input
 							id="exp-date-m"
-							type="text"
 							name="expDateM"
 							value={form.expDateM}
 							errorMessage="can't be blank"
 							placeholder="MM"
 							className="month-year-input"
 							handleChange={handleChange}
+							min={parseInt("2")}
 						/>
 						<Input
 							id="exp-date-y"
-							type="text"
 							name="expDateY"
 							value={form.expDateY}
 							placeholder="YY"
 							className="month-year-input"
 							handleChange={handleChange}
+							min={parseInt("2")}
 						/>
 					</div>
 				</div>
 				<Input
 					id="cvc"
-					type="text"
 					label="cvc"
 					name="cvc"
 					value={form.cvc}
@@ -98,6 +108,7 @@ const Form = ({ setCardDetails, handleSubmit }: FormProps) => {
 					placeholder="e.g. 123"
 					className="cvc-input"
 					handleChange={handleChange}
+					min={parseInt("3")}
 				/>
 			</div>
 			<Button type="submit" text="Confirm" handleClick={handleSubmit} />

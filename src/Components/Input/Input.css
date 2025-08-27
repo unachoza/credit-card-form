@@ -43,6 +43,12 @@ input:focus {
       background: var(--white);
 }
 
+input:not(:focus):not(:placeholder-shown):invalid {
+      border-radius: 0.5rem;
+      border: 1px solid var(--input-errors);
+      background: var(--white);
+}
+
 input:user-invalid{
       border-radius: 0.5rem;
       border: 1px solid var(--input-errors);

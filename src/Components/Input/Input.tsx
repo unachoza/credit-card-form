@@ -4,16 +4,16 @@ import "./Input.css";
 interface InputProps {
 	id: string;
 	label?: string;
+	min?: number;
 	name: string;
 	className?: string;
 	value: string | number;
 	errorMessage?: string;
-	type: string;
 	placeholder: string;
 	handleChange: (e: FormEvent<HTMLInputElement>) => void;
 }
 
-const Input = ({ id, label, name, className, value, errorMessage, type, placeholder, handleChange }: InputProps) => {
+const Input = ({ id, label, name, className, value, errorMessage, placeholder, handleChange, min }: InputProps) => {
 	return (
 		<label htmlFor={id}>
 			<div className="label-text">{label ? label : null}</div>
@@ -22,10 +22,11 @@ const Input = ({ id, label, name, className, value, errorMessage, type, placehol
 				name={name}
 				className={className ? className : ""}
 				value={value}
-				type={type}
+				type="text"
 				placeholder={placeholder}
 				onChange={handleChange}
 				required
+				minLength={min}
 			/>
 			<div className="error-message" role="alert" id={`${name}-error`}>
 				{errorMessage}

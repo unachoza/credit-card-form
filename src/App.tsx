@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 import SidePanelImage from "../src/assets/images/bg-main-desktop.png";
 import mobilePanelImage from "../src/assets/images/bg-main-mobile.png";
 import cardFrontImage from "../src/assets/images/bg-card-front.png";
@@ -32,10 +32,7 @@ function App() {
 
 	const resetForm = () => setComplete(false);
 
-	const handleSubmit = (e: FormEvent): void => {
-		e.preventDefault();
-		console.log("clicked");
-		//validation!!
+	const handleSubmit = (): void => {
 		setComplete(true);
 	};
 
@@ -52,7 +49,7 @@ function App() {
 					<img id="cardBack" className="card" src={cardBackImage} alt="card-back" />
 				</div>
 				<div className="card-input-container">
-					{!complete && <Form setCardDetails={setCardDetails} handleSubmit={handleSubmit} />}
+					{!complete && <Form setCardDetails={setCardDetails} onSubmit={handleSubmit} />}
 					{complete && <UserMessage message={message} reset={resetForm} />}
 				</div>
 			</div>

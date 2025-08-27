@@ -70,9 +70,9 @@ img.side-panel {
 	position: absolute;
 	width: 90%;
 	height: 100px;
-	bottom: 4%;
+	bottom: 7%;
 	left: 42%;
-	border: solid green;
+	/* border: solid green; */
 }
 
 /* Card Form and Complete Container */
