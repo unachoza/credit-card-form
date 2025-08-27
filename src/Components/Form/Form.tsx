@@ -54,7 +54,7 @@ const Form = ({ setCardDetails, onSubmit }: FormProps) => {
 	};
 
 	return (
-		<form onSubmit={handleSubmit}>
+		<form onSubmit={handleSubmit} aria-labelledby="payment-form-title">
 			<Input
 				id="card-name"
 				label="cardholder name"
